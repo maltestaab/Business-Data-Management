@@ -42,7 +42,7 @@ client = bigquery.Client(credentials=credentials, project="edhecbusinessdatamana
 query = """
     SELECT * 
     FROM `edhec-business-manageme.luxurydata2502.price-monitoring-2022`
-    WHERE Brand = 'Chanel'
+    WHERE Brand = 'cartier'
 """
 
 # Run the query and load results into a Pandas DataFrame
