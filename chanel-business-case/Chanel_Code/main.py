@@ -1,38 +1,31 @@
 from google.cloud import bigquery
 from google.oauth2 import service_account
+from google.cloud import bigquery_storage
 import pandas as pd
 import requests
 import os
 from dotenv import load_dotenv
 import matplotlib.pyplot as plt
+from transformation import clean_cartier_data, convert_prices_to_eur
+
 
 ########## DATA IMPORT ###########
 
-# Handle .env path for both scripts and notebooks
-try:
-    # For .py scripts
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-except NameError:
-    # For Jupyter Notebooks (__file__ not defined)
-    project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
-
-# Load .env from project root
-dotenv_path = os.path.join(project_root, '.env')
-load_dotenv(dotenv_path)
+# Load environment variables from .env file
+load_dotenv()
 
 # Access environment variables
 model_target = os.getenv("MODEL_TARGET")
 credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
 # Print to check if they are loaded correctly
-print(f"Model Target: {model_target}")
-print(f"Google Credentials Path: {credentials_path}")
+print(f"\nModel Target: {model_target}")
+print(f"\nGoogle Credentials Path: {credentials_path}")
+print("\n")
 
-# Path to your Google Cloud service account key file
-key_path = credentials_path
 
 # Create credentials and initialize the BigQuery client
-credentials = service_account.Credentials.from_service_account_file(key_path)
+credentials = service_account.Credentials.from_service_account_file(credentials_path)
 client = bigquery.Client(credentials=credentials, project="edhecbusinessdatamanagement")
 
 
@@ -51,6 +44,9 @@ df = client.query(query).to_dataframe()
 # Path to your Google Cloud service account key file
 key_path = credentials_path
 
+print("\n###2020-2022 DF ###")
+# Preview the DataFrame
+print(df.head())
 ########### 2025 Data ##############
 
 
@@ -65,6 +61,7 @@ WHERE brand = 'Cartier';
 query_job = client.query(query)
 df_2025 = query_job.result().to_dataframe()
 
+print("\n### 2025 DF ###")
 # Preview the DataFrame
 print(df_2025.head())
 
@@ -73,3 +70,15 @@ print(df_2025.head())
 # Preprocessing
 df_cleaned = clean_cartier_data(df)
 df_converted = convert_prices_to_eur(df_cleaned)
+
+df_2025_cleaned = clean_cartier_data(df_2025)
+df_2025_converted = convert_prices_to_eur(df_2025_cleaned)
+
+
+print("\n### 2020-2022 DF CLEANED AND CONVERTED ###")
+# Preview the DataFrame
+print(df_converted)
+
+
+df_converted.columns()
+
