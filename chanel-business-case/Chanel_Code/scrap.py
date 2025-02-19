@@ -30,7 +30,18 @@ urls = [
     "https://www.cartier.com/fr-fr/montres/collection-de-montres/reflection-de-cartier",
     "https://www.cartier.com/fr-fr/montres/collection-de-montres/clash-unlimited",
     "https://www.cartier.com/fr-fr/montres/collection-de-montres/cartier-prive",
-    "https://www.cartier.com/fr-fr/montres/collection-de-montres/haute-horlogerie"
+    "https://www.cartier.com/fr-fr/montres/collection-de-montres/haute-horlogerie",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/trinity",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/love",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/juste-un-clou",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/clash-de-cartier",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/panthere-de-cartier",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/cartier-d-amour",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/collections-diamant",
+    "https://www.cartier.com/fr-fr/joaillerie/collection-de-joaillerie/symboles-et-logos",
+    "https://www.cartier.com/fr-fr/sacs-et-accessoires/sacs",
+    "https://www.cartier.com/fr-fr/parfums/parfums",
+    
 ]
 
 # Loop through each URL
